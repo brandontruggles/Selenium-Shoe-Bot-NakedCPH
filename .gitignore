@@ -3,3 +3,5 @@ lib/
 local/
 include/
 selenium/
+node_modules/
+ghostdriver.log

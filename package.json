@@ -1,0 +1,27 @@
+{
+  "name": "selenium-shoe-bot",
+  "version": "1.0.0",
+  "description": "A Python bot for buying shoes and other products from a particular website. NodeJS is needed to quickly install the headless browser PhantomJS for its use in this project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonrninefive/SeleniumShoeBot.git"
+  },
+  "keywords": [
+    "Selenium",
+    "Shoe",
+    "Bot"
+  ],
+  "author": "Brandon Ruggles",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/brandonrninefive/SeleniumShoeBot/issues"
+  },
+  "homepage": "https://github.com/brandonrninefive/SeleniumShoeBot#readme",
+  "dependencies": {
+    "phantomjs-prebuilt": "^2.1.14"
+  }
+}
