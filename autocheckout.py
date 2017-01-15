@@ -66,31 +66,16 @@ def checkout(card_number, card_expiration, card_crn):
 	mainContentDiv = driver.find_element_by_xpath('/html/body/div[@id="main"]/div[@id="main-content"]/div')
 
 	##########Try this code if the code in the box below doesn't work##########################################
-	#emailBox = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="details-form-li-email"]/input')
-	#emailBox2 = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="details-form-li-email_repeat"]/input')
-	#checkoutButton = mainContentDiv.find_element_by_xpath('./form/ul/li[15]/input[@id="details-form-submit"]')
-
-
-	##########Default Code#####################################################################################
-	emailBox = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="details-form-li-email"]/input')
-	emailBox2 = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="details-form-li-email_repeat"]/input')
-	checkoutButton = mainContentDiv.find_element_by_xpath('./form/ul/li[15]/input[@id="details-form-submit"]')	
-	###########################################################################################################
-
-	#We can take some shortcuts since we're logged in...
-	emailBox2.send_keys(emailBox.get_attribute('value'))
-	checkoutButton.click()
-	
-	mainContentDiv = driver.find_element_by_xpath('/html/body/div[@id="main"]/div[@id="main-content"]/div') 
-	checkoutButton2 = mainContentDiv.find_element_by_xpath('./form/ul/li[3]/input[@id="handling-form-submit"]')
-	checkoutButton2.click()
-
-	mainContentDiv = driver.find_element_by_xpath('/html/body/div[@id="main"]/div[@id="main-content"]/div') 
-	totalTable = mainContentDiv.find_element_by_xpath('./table')
+	emailBox = mainContentDiv.find_element_by_xpath('./div[@id="onestepcheckout-details"]/div/form/ul/li[@id="details-form-li-email"]/input')
+	emailBox2 = mainContentDiv.find_element_by_xpath('./div[@id="onestepcheckout-details"]/div/form/ul/li[@id="details-form-li-email_repeat"]/input')
+	checkoutBox = mainContentDiv.find_element_by_xpath('./div[@id="onestepcheckout-confirm"]/div/form/ul/li[1]/input') 
+	checkoutButton = mainContentDiv.find_element_by_xpath('./div[@id="onestepcheckout-confirm"]/div/form/ul/li[2]/input')
+	totalTable = mainContentDiv.find_element_by_xpath('./div[@id="onestepcheckout-confirm"]/div/table')
 	totalTableBody = totalTable.find_element_by_xpath('./tbody')
 	tableItems = totalTableBody.find_elements_by_xpath('./tr')	
 	totalTableFooter = totalTable.find_element_by_xpath('./tfoot')
 	tableTotalsItems = totalTableFooter.find_elements_by_xpath('./tr')
+
 	print 'Checkout page details: '
 	print ''
 	for item in tableItems:
@@ -104,18 +89,60 @@ def checkout(card_number, card_expiration, card_crn):
 	print 'Totals: '
 	print ''
 	for item in tableTotalsItems:
-		tableTotalsItemName = item.find_element_by_xpath('./td[@class="title"]')
-		tableTotalsItemValue = item.find_element_by_xpath('./td[@class="total"]')
+		tableTotalsItemName = item.find_element_by_xpath('./td[1]')
+		tableTotalsItemValue = item.find_element_by_xpath('./td[2]')
 		print tableTotalsItemName.text + ':' + tableTotalsItemValue.text
 		print ''
-	
-	agreeBox = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="confirm-form-li-confirmed"]/input')
+	#We can take some shortcuts since we're logged in...
+	emailBox2.send_keys(emailBox.get_attribute('value'))
+	checkoutBox.click()
+	checkoutButton.click()
+	###########################################################################################################
 
-	agreeBox.click()
-
-	checkoutButton3 = mainContentDiv.find_element_by_xpath('./form/ul/li[2]/input[2]')
+	##########Default Code#####################################################################################
+	#emailBox = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="details-form-li-email"]/input')
+	#emailBox2 = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="details-form-li-email_repeat"]/input')
+	#checkoutButton = mainContentDiv.find_element_by_xpath('./form/ul/li[15]/input[@id="details-form-submit"]')	
+	#We can take some shortcuts since we're logged in...
+	#emailBox2.send_keys(emailBox.get_attribute('value'))
+	#checkoutButton.click()	
+	#mainContentDiv = driver.find_element_by_xpath('/html/body/div[@id="main"]/div[@id="main-content"]/div') 
+	#checkoutButton2 = mainContentDiv.find_element_by_xpath('./form/ul/li[3]/input[@id="handling-form-submit"]')
+	#checkoutButton2.click()
+	#mainContentDiv = driver.find_element_by_xpath('/html/body/div[@id="main"]/div[@id="main-content"]/div') 
+	#totalTable = mainContentDiv.find_element_by_xpath('./table')
+	#totalTableBody = totalTable.find_element_by_xpath('./tbody')
+	#tableItems = totalTableBody.find_elements_by_xpath('./tr')	
+	#totalTableFooter = totalTable.find_element_by_xpath('./tfoot')
+	#tableTotalsItems = totalTableFooter.find_elements_by_xpath('./tr')
+	#print 'Checkout page details: '
+	#print ''
+	#for item in tableItems:
+	#	tableItemDetails = item.find_elements_by_xpath('./td')
+	#	printableDetails = ""
+	#	print 'Item:'
+	#	for detail in tableItemDetails:
+	#		printableDetails += detail.text + ","
+	#	print printableDetails
+	#	print ''
+	#print 'Totals: '
+	#print ''
+	#for item in tableTotalsItems:
+	#	tableTotalsItemName = item.find_element_by_xpath('./td[@class="title"]')
+	#	tableTotalsItemValue = item.find_element_by_xpath('./td[@class="total"]')
+	#	print tableTotalsItemName.text + ':' + tableTotalsItemValue.text
+	#	print ''
 	
-	checkoutButton3.click()
+	#agreeBox = mainContentDiv.find_element_by_xpath('./form/ul/li[@id="confirm-form-li-confirmed"]/input')
+
+	#agreeBox.click()
+
+	#checkoutButton3 = mainContentDiv.find_element_by_xpath('./form/ul/li[2]/input[2]')
+	
+	#checkoutButton3.click()
+
+	###########################################################################################################
+
 	paymentForm =  driver.find_element_by_xpath('/html/body/div/div[@id="content"]/div[@id="payment_details"]/form')
 	cardBox = paymentForm.find_element_by_xpath('./dl/dd[1]/input')
 	monthBox = paymentForm.find_element_by_xpath('./dl/dd[2]/input[1]')
