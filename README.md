@@ -12,9 +12,7 @@ This is a simple Python bot which uses Selenium to navigate the website [http://
 
 3. Download or clone this repository to a directory on your machine.
 
-4. Open the terminal, navigate to the project directory, and type the command `pip install -r requirements.txt`. This should install the Python dependencies Selenium and Chromedriver.
-
-*NOTE: On Mac, the dependency chromedriver-installer may not download. If this is the case, you will have to install chromedriver manually.*
+4. Open the terminal, navigate to the project directory, and type the command `pip install -r requirements.txt`. This should install the Python dependencies Selenium and Chromedriver. *NOTE: On Mac, the dependency chromedriver-installer may not download. If this is the case, you will have to install chromedriver manually.*
 
 5. From the terminal, type the command `npm install`. This should install PhantomJS.
 
