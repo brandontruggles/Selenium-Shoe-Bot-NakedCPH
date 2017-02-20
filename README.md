@@ -8,11 +8,11 @@ This is a simple Python bot which uses Selenium to navigate the website [http://
 
 1. Make sure that you have Python 2.7.X installed, along with Pip.
 
-2. Install Node.JS and NPM.
+2. Install Node.js and NPM.
 
 3. Download or clone this repository to a directory on your machine.
 
-4. Add the directory containing this project into your global PYTHONPATH environment variable. *NOTE: If you get an error stating that checkout.conf cannot be found, or that it contains invalid JSON, you may not have performed this step.*
+4. Add the directory containing this project into your global PYTHONPATH environment variable. *NOTE: If you get an error stating that checkout.conf cannot be found, or that it contains invalid JSON, but the JSON in checkout.conf is correct, you may not have performed this step.*
 
 5. Open the terminal, navigate to the project directory, and type the command `pip install -r requirements.txt`. This should install the Python dependencies Selenium and Chromedriver. *NOTE: On Mac, the dependency chromedriver-installer may not download. If this is the case, you will have to install Chromedriver manually.*
 
@@ -22,7 +22,7 @@ This is a simple Python bot which uses Selenium to navigate the website [http://
 
 8. You may edit autocheckout.py to use Chromedriver instead of PhantomJS if you wish to view the browser navigation performed by the script. 
 
-9. Run the program from the terminal with `python autocheckout.py`.
+9. Run the program from the terminal with `python autocheckout.py`. *NOTE: If the checkout process does not complete properly and the program crashes (not including JSON errors, see instruction number 4 for those), then that means that one of two things occurred: Either the site did not have the desired quantity of a particular item in your order, or the website's HTML has been updated since the writing of this script. If the latter is true, then you can try commenting out the alternate code section in the script, and uncommenting the default code section. Please refer to the comments in the script for finding these sections. If neither of the code sections work, then the HTML hardcoded into this script may be outdated. Feel free to modify the HTML in the script to fit your needs. If you wish to debug the script further, you can comment out the PhantomJS driver initialization in the script, and uncomment the Chromedriver initialization to view the browser's progress in real time.*
 
 ## Installation Instructions (Windows)
 
