@@ -1,4 +1,6 @@
-# Selenium Shoe Bot
+# Selenium Shoe Bot (DEPRECATED!)
+
+**This program is old and no longer works on the nakedcph site. This repo remains here as a simple example of how to use Selenium to make an automated purchase bot. This code is no longer maintained. Please do not DM me to improve this code, you will be on your own.**
 
 *NOTE: This program is made for Python 2.7.X and will not work with Python 3.X.X!*
 
